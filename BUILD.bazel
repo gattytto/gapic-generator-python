@@ -17,8 +17,8 @@ pandoc_toolchain(
 
 pandoc_toolchain(
     exec_compatible_with = [
-        "@bazel_tools//platforms:osx",
-        "@bazel_tools//platforms:x86_64",
+        "@platforms//os:osx",
+        "@platforms//cpu:x86_64",
     ],
     platform = "macOS",
 )
