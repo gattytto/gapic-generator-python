@@ -17,7 +17,8 @@ from collections import OrderedDict
 import functools
 import re
 from typing import Dict, Mapping, MutableMapping, MutableSequence, Optional, Sequence, Tuple, Type, Union
-import pkg_resources
+
+from google.cloud.asset_v1 import gapic_version as package_version
 
 from google.api_core.client_options import ClientOptions
 from google.api_core import exceptions as core_exceptions
@@ -112,7 +113,7 @@ class AssetServiceAsyncClient:
         The API endpoint is determined in the following order:
         (1) if `client_options.api_endpoint` if provided, use the provided one.
         (2) if `GOOGLE_API_USE_CLIENT_CERTIFICATE` environment variable is "always", use the
-        default mTLS endpoint; if the environment variabel is "never", use the default API
+        default mTLS endpoint; if the environment variable is "never", use the default API
         endpoint; otherwise if client cert source exists, use the default mTLS endpoint, otherwise
         use the default API endpoint.
 
@@ -193,7 +194,7 @@ class AssetServiceAsyncClient:
             request: Optional[Union[asset_service.ExportAssetsRequest, dict]] = None,
             *,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: Optional[float] = None,
+            timeout: Union[float, object] = gapic_v1.method.DEFAULT,
             metadata: Sequence[Tuple[str, str]] = (),
             ) -> operation_async.AsyncOperation:
         r"""Exports assets with time and resource types to a given Cloud
@@ -307,7 +308,7 @@ class AssetServiceAsyncClient:
             *,
             parent: Optional[str] = None,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: Optional[float] = None,
+            timeout: Union[float, object] = gapic_v1.method.DEFAULT,
             metadata: Sequence[Tuple[str, str]] = (),
             ) -> pagers.ListAssetsAsyncPager:
         r"""Lists assets with time and resource types and returns
@@ -422,7 +423,7 @@ class AssetServiceAsyncClient:
             request: Optional[Union[asset_service.BatchGetAssetsHistoryRequest, dict]] = None,
             *,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: Optional[float] = None,
+            timeout: Union[float, object] = gapic_v1.method.DEFAULT,
             metadata: Sequence[Tuple[str, str]] = (),
             ) -> asset_service.BatchGetAssetsHistoryResponse:
         r"""Batch gets the update history of assets that overlap a time
@@ -514,7 +515,7 @@ initial=0.1,maximum=60.0,multiplier=1.3,                predicate=retries.if_exc
             *,
             parent: Optional[str] = None,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: Optional[float] = None,
+            timeout: Union[float, object] = gapic_v1.method.DEFAULT,
             metadata: Sequence[Tuple[str, str]] = (),
             ) -> asset_service.Feed:
         r"""Creates a feed in a parent
@@ -633,7 +634,7 @@ initial=0.1,maximum=60.0,multiplier=1.3,                predicate=retries.if_exc
             *,
             name: Optional[str] = None,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: Optional[float] = None,
+            timeout: Union[float, object] = gapic_v1.method.DEFAULT,
             metadata: Sequence[Tuple[str, str]] = (),
             ) -> asset_service.Feed:
         r"""Gets details about an asset feed.
@@ -747,7 +748,7 @@ initial=0.1,maximum=60.0,multiplier=1.3,                predicate=retries.if_exc
             *,
             parent: Optional[str] = None,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: Optional[float] = None,
+            timeout: Union[float, object] = gapic_v1.method.DEFAULT,
             metadata: Sequence[Tuple[str, str]] = (),
             ) -> asset_service.ListFeedsResponse:
         r"""Lists all asset feeds in a parent
@@ -857,7 +858,7 @@ initial=0.1,maximum=60.0,multiplier=1.3,                predicate=retries.if_exc
             *,
             feed: Optional[asset_service.Feed] = None,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: Optional[float] = None,
+            timeout: Union[float, object] = gapic_v1.method.DEFAULT,
             metadata: Sequence[Tuple[str, str]] = (),
             ) -> asset_service.Feed:
         r"""Updates an asset feed configuration.
@@ -968,7 +969,7 @@ initial=0.1,maximum=60.0,multiplier=1.3,                predicate=retries.if_exc
             *,
             name: Optional[str] = None,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: Optional[float] = None,
+            timeout: Union[float, object] = gapic_v1.method.DEFAULT,
             metadata: Sequence[Tuple[str, str]] = (),
             ) -> None:
         r"""Deletes an asset feed.
@@ -1067,7 +1068,7 @@ initial=0.1,maximum=60.0,multiplier=1.3,                predicate=retries.if_exc
             query: Optional[str] = None,
             asset_types: Optional[MutableSequence[str]] = None,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: Optional[float] = None,
+            timeout: Union[float, object] = gapic_v1.method.DEFAULT,
             metadata: Sequence[Tuple[str, str]] = (),
             ) -> pagers.SearchAllResourcesAsyncPager:
         r"""Searches all Cloud resources within the specified scope, such as
@@ -1280,7 +1281,7 @@ initial=0.1,maximum=60.0,multiplier=1.3,                predicate=retries.if_exc
             scope: Optional[str] = None,
             query: Optional[str] = None,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: Optional[float] = None,
+            timeout: Union[float, object] = gapic_v1.method.DEFAULT,
             metadata: Sequence[Tuple[str, str]] = (),
             ) -> pagers.SearchAllIamPoliciesAsyncPager:
         r"""Searches all IAM policies within the specified scope, such as a
@@ -1471,7 +1472,7 @@ initial=0.1,maximum=60.0,multiplier=1.3,                predicate=retries.if_exc
             request: Optional[Union[asset_service.AnalyzeIamPolicyRequest, dict]] = None,
             *,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: Optional[float] = None,
+            timeout: Union[float, object] = gapic_v1.method.DEFAULT,
             metadata: Sequence[Tuple[str, str]] = (),
             ) -> asset_service.AnalyzeIamPolicyResponse:
         r"""Analyzes IAM policies to answer which identities have
@@ -1562,7 +1563,7 @@ initial=0.1,maximum=60.0,multiplier=1.3,                predicate=retries.if_exc
             request: Optional[Union[asset_service.AnalyzeIamPolicyLongrunningRequest, dict]] = None,
             *,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: Optional[float] = None,
+            timeout: Union[float, object] = gapic_v1.method.DEFAULT,
             metadata: Sequence[Tuple[str, str]] = (),
             ) -> operation_async.AsyncOperation:
         r"""Analyzes IAM policies asynchronously to answer which identities
@@ -1679,14 +1680,7 @@ initial=0.1,maximum=60.0,multiplier=1.3,                predicate=retries.if_exc
     async def __aexit__(self, exc_type, exc, tb):
         await self.transport.close()
 
-try:
-    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
-        gapic_version=pkg_resources.get_distribution(
-            "google-cloud-asset",
-        ).version,
-    )
-except pkg_resources.DistributionNotFound:
-    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo()
+DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(gapic_version=package_version.__version__)
 
 
 __all__ = (

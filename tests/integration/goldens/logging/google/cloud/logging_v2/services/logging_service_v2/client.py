@@ -17,7 +17,8 @@ from collections import OrderedDict
 import os
 import re
 from typing import Dict, Mapping, MutableMapping, MutableSequence, Optional, Iterable, Iterator, Sequence, Tuple, Type, Union, cast
-import pkg_resources
+
+from google.cloud.logging_v2 import gapic_version as package_version
 
 from google.api_core import client_options as client_options_lib
 from google.api_core import exceptions as core_exceptions
@@ -243,7 +244,7 @@ class LoggingServiceV2Client(metaclass=LoggingServiceV2ClientMeta):
         The API endpoint is determined in the following order:
         (1) if `client_options.api_endpoint` if provided, use the provided one.
         (2) if `GOOGLE_API_USE_CLIENT_CERTIFICATE` environment variable is "always", use the
-        default mTLS endpoint; if the environment variabel is "never", use the default API
+        default mTLS endpoint; if the environment variable is "never", use the default API
         endpoint; otherwise if client cert source exists, use the default mTLS endpoint, otherwise
         use the default API endpoint.
 
@@ -384,7 +385,7 @@ class LoggingServiceV2Client(metaclass=LoggingServiceV2ClientMeta):
             *,
             log_name: Optional[str] = None,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: Optional[float] = None,
+            timeout: Union[float, object] = gapic_v1.method.DEFAULT,
             metadata: Sequence[Tuple[str, str]] = (),
             ) -> None:
         r"""Deletes all the log entries in a log. The log
@@ -491,7 +492,7 @@ class LoggingServiceV2Client(metaclass=LoggingServiceV2ClientMeta):
             labels: Optional[MutableMapping[str, str]] = None,
             entries: Optional[MutableSequence[log_entry.LogEntry]] = None,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: Optional[float] = None,
+            timeout: Union[float, object] = gapic_v1.method.DEFAULT,
             metadata: Sequence[Tuple[str, str]] = (),
             ) -> logging.WriteLogEntriesResponse:
         r"""Writes log entries to Logging. This API method is the
@@ -679,7 +680,7 @@ class LoggingServiceV2Client(metaclass=LoggingServiceV2ClientMeta):
             filter: Optional[str] = None,
             order_by: Optional[str] = None,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: Optional[float] = None,
+            timeout: Union[float, object] = gapic_v1.method.DEFAULT,
             metadata: Sequence[Tuple[str, str]] = (),
             ) -> pagers.ListLogEntriesPager:
         r"""Lists log entries. Use this method to retrieve log entries that
@@ -832,7 +833,7 @@ class LoggingServiceV2Client(metaclass=LoggingServiceV2ClientMeta):
             request: Optional[Union[logging.ListMonitoredResourceDescriptorsRequest, dict]] = None,
             *,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: Optional[float] = None,
+            timeout: Union[float, object] = gapic_v1.method.DEFAULT,
             metadata: Sequence[Tuple[str, str]] = (),
             ) -> pagers.ListMonitoredResourceDescriptorsPager:
         r"""Lists the descriptors for monitored resource types
@@ -920,7 +921,7 @@ class LoggingServiceV2Client(metaclass=LoggingServiceV2ClientMeta):
             *,
             parent: Optional[str] = None,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: Optional[float] = None,
+            timeout: Union[float, object] = gapic_v1.method.DEFAULT,
             metadata: Sequence[Tuple[str, str]] = (),
             ) -> pagers.ListLogsPager:
         r"""Lists the logs in projects, organizations, folders,
@@ -1039,7 +1040,7 @@ class LoggingServiceV2Client(metaclass=LoggingServiceV2ClientMeta):
             requests: Optional[Iterator[logging.TailLogEntriesRequest]] = None,
             *,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: Optional[float] = None,
+            timeout: Union[float, object] = gapic_v1.method.DEFAULT,
             metadata: Sequence[Tuple[str, str]] = (),
             ) -> Iterable[logging.TailLogEntriesResponse]:
         r"""Streaming read of log entries as they are ingested.
@@ -1112,7 +1113,7 @@ class LoggingServiceV2Client(metaclass=LoggingServiceV2ClientMeta):
         # Done; return the response.
         return response
 
-    def __enter__(self):
+    def __enter__(self) -> "LoggingServiceV2Client":
         return self
 
     def __exit__(self, type, value, traceback):
@@ -1130,14 +1131,8 @@ class LoggingServiceV2Client(metaclass=LoggingServiceV2ClientMeta):
 
 
 
-try:
-    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
-        gapic_version=pkg_resources.get_distribution(
-            "google-cloud-logging",
-        ).version,
-    )
-except pkg_resources.DistributionNotFound:
-    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo()
+
+DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(gapic_version=package_version.__version__)
 
 
 __all__ = (

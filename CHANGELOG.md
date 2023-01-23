@@ -1,6 +1,53 @@
 # Changelog
 
 
+## [1.8.1](https://github.com/googleapis/gapic-generator-python/compare/v1.8.0...v1.8.1) (2023-01-19)
+
+
+### Bug Fixes
+
+* Add context manager return types ([#1468](https://github.com/googleapis/gapic-generator-python/issues/1468)) ([e0b38d3](https://github.com/googleapis/gapic-generator-python/commit/e0b38d35b168dabacfa6d841b29149523e9e34ca))
+
+
+### Documentation
+
+* Add documentation for enums ([#1568](https://github.com/googleapis/gapic-generator-python/issues/1568)) ([69097ac](https://github.com/googleapis/gapic-generator-python/commit/69097acb5d102eb14579d16235a9b6b901ba14a1))
+
+## [1.8.0](https://github.com/googleapis/gapic-generator-python/compare/v1.7.1...v1.8.0) (2023-01-09)
+
+
+### Features
+
+* Add support for python 3.11 ([#1555](https://github.com/googleapis/gapic-generator-python/issues/1555)) ([ece3686](https://github.com/googleapis/gapic-generator-python/commit/ece3686bb8dfd65686209723d9a35501bbde5773))
+
+
+### Documentation
+
+* **client:** Fix typo in get_mtls_endpoint_and_cert_source doc ([#1552](https://github.com/googleapis/gapic-generator-python/issues/1552)) ([57e8abc](https://github.com/googleapis/gapic-generator-python/commit/57e8abc5ec7e2ad430e88e68d98a56a5713acf71))
+* **utils:** Fix typos in nth function docstring ([#1553](https://github.com/googleapis/gapic-generator-python/issues/1553)) ([e4be9ae](https://github.com/googleapis/gapic-generator-python/commit/e4be9aefc3ad08a6708524b1483f3abf6ce68a05))
+
+## [1.7.1](https://github.com/googleapis/gapic-generator-python/compare/v1.7.0...v1.7.1) (2022-12-13)
+
+
+### Bug Fixes
+
+* Fix unit test with float comparison ([#1541](https://github.com/googleapis/gapic-generator-python/issues/1541)) ([c5741ff](https://github.com/googleapis/gapic-generator-python/commit/c5741ff2f0658800210060392727016d1a5b4a8b))
+
+## [1.7.0](https://github.com/googleapis/gapic-generator-python/compare/v1.6.2...v1.7.0) (2022-12-06)
+
+
+### Features
+
+* Add snippetgen config language and testing resource files ([#1504](https://github.com/googleapis/gapic-generator-python/issues/1504)) ([5b98659](https://github.com/googleapis/gapic-generator-python/commit/5b98659816b38ab5f376a5748b6275f1c2667aaf))
+
+
+### Bug Fixes
+
+* **deps:** require google-api-core &gt;=1.34.0, >=2.11.0 ([6de9e28](https://github.com/googleapis/gapic-generator-python/commit/6de9e2881171d873ab3d76bfa386667ae745f0d9))
+* Drop usage of pkg_resources ([#1471](https://github.com/googleapis/gapic-generator-python/issues/1471)) ([a50c290](https://github.com/googleapis/gapic-generator-python/commit/a50c2909b5eb14c16acaf16057944688891eb7af))
+* Fix timeout default values ([6de9e28](https://github.com/googleapis/gapic-generator-python/commit/6de9e2881171d873ab3d76bfa386667ae745f0d9))
+* Snippetgen should call await on the operation coroutine before calling result ([#1495](https://github.com/googleapis/gapic-generator-python/issues/1495)) ([69a49c6](https://github.com/googleapis/gapic-generator-python/commit/69a49c6b9e8a45c87e8f2a9d4b25f00b9a4b01be))
+
 ## [1.6.2](https://github.com/googleapis/gapic-generator-python/compare/v1.6.1...v1.6.2) (2022-11-15)
 
 

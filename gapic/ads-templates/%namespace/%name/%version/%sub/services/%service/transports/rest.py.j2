@@ -69,13 +69,14 @@ class {{ service.name }}RestInterceptor:
     .. code-block:: python
         class MyCustom{{ service.name }}Interceptor({{ service.name }}RestInterceptor):
     {% for _, method in service.methods|dictsort if not method.client_streaming %}
-            def pre_{{ method.name|snake_case }}(request, metadata):
+            def pre_{{ method.name|snake_case }}(self, request, metadata):
                 logging.log(f"Received request: {request}")
                 return request, metadata
 
     {% if not method.void %}
-            def post_{{ method.name|snake_case }}(response):
+            def post_{{ method.name|snake_case }}(self, response):
                 logging.log(f"Received response: {response}")
+                return response
     {% endif %}
 
 {% endfor %}
@@ -251,7 +252,8 @@ class {{service.name}}RestTransport({{service.name}}Transport):
                     # use the credentials which are saved
                     credentials=self._credentials,
                     scopes=self._scopes,
-                    http_options=http_options)
+                    http_options=http_options,
+                    path_prefix="{{ service.client_package_version }}")
 
             self._operations_client = operations_v1.AbstractOperationsClient(transport=rest_transport)
 
@@ -282,9 +284,9 @@ class {{service.name}}RestTransport({{service.name}}Transport):
 
         def __call__(self,
                 request: {{method.input.ident}}, *,
-                retry: OptionalRetry = gapic_v1.method.DEFAULT,
-                timeout: Optional[float] = None,
-                metadata: Sequence[Tuple[str, str]] = (),
+                retry: OptionalRetry=gapic_v1.method.DEFAULT,
+                timeout: Optional[float]=None,
+                metadata: Sequence[Tuple[str, str]]=(),
                 ){% if not method.void %} -> {% if not method.server_streaming %}{{method.output.ident}}{% else %}rest_streaming.ResponseIterator{% endif %}{% endif %}:
     {% if method.http_options and not method.client_streaming %}
             r"""Call the {{- ' ' -}}

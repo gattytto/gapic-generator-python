@@ -67,37 +67,41 @@ class MetricsServiceV2RestInterceptor:
 
     .. code-block:: python
         class MyCustomMetricsServiceV2Interceptor(MetricsServiceV2RestInterceptor):
-            def pre_create_log_metric(request, metadata):
+            def pre_create_log_metric(self, request, metadata):
                 logging.log(f"Received request: {request}")
                 return request, metadata
 
-            def post_create_log_metric(response):
+            def post_create_log_metric(self, response):
                 logging.log(f"Received response: {response}")
+                return response
 
-            def pre_delete_log_metric(request, metadata):
+            def pre_delete_log_metric(self, request, metadata):
                 logging.log(f"Received request: {request}")
                 return request, metadata
 
-            def pre_get_log_metric(request, metadata):
+            def pre_get_log_metric(self, request, metadata):
                 logging.log(f"Received request: {request}")
                 return request, metadata
 
-            def post_get_log_metric(response):
+            def post_get_log_metric(self, response):
                 logging.log(f"Received response: {response}")
+                return response
 
-            def pre_list_log_metrics(request, metadata):
+            def pre_list_log_metrics(self, request, metadata):
                 logging.log(f"Received request: {request}")
                 return request, metadata
 
-            def post_list_log_metrics(response):
+            def post_list_log_metrics(self, response):
                 logging.log(f"Received response: {response}")
+                return response
 
-            def pre_update_log_metric(request, metadata):
+            def pre_update_log_metric(self, request, metadata):
                 logging.log(f"Received request: {request}")
                 return request, metadata
 
-            def post_update_log_metric(response):
+            def post_update_log_metric(self, response):
                 logging.log(f"Received response: {response}")
+                return response
 
         transport = MetricsServiceV2RestTransport(interceptor=MyCustomMetricsServiceV2Interceptor())
         client = MetricsServiceV2Client(transport=transport)
@@ -290,9 +294,9 @@ class MetricsServiceV2RestTransport(MetricsServiceV2Transport):
 
         def __call__(self,
                 request: logging_metrics.CreateLogMetricRequest, *,
-                retry: OptionalRetry = gapic_v1.method.DEFAULT,
-                timeout: Optional[float] = None,
-                metadata: Sequence[Tuple[str, str]] = (),
+                retry: OptionalRetry=gapic_v1.method.DEFAULT,
+                timeout: Optional[float]=None,
+                metadata: Sequence[Tuple[str, str]]=(),
                 ) -> logging_metrics.LogMetric:
             r"""Call the create log metric method over HTTP.
 
@@ -386,9 +390,9 @@ class MetricsServiceV2RestTransport(MetricsServiceV2Transport):
 
         def __call__(self,
                 request: logging_metrics.DeleteLogMetricRequest, *,
-                retry: OptionalRetry = gapic_v1.method.DEFAULT,
-                timeout: Optional[float] = None,
-                metadata: Sequence[Tuple[str, str]] = (),
+                retry: OptionalRetry=gapic_v1.method.DEFAULT,
+                timeout: Optional[float]=None,
+                metadata: Sequence[Tuple[str, str]]=(),
                 ):
             r"""Call the delete log metric method over HTTP.
 
@@ -450,9 +454,9 @@ class MetricsServiceV2RestTransport(MetricsServiceV2Transport):
 
         def __call__(self,
                 request: logging_metrics.GetLogMetricRequest, *,
-                retry: OptionalRetry = gapic_v1.method.DEFAULT,
-                timeout: Optional[float] = None,
-                metadata: Sequence[Tuple[str, str]] = (),
+                retry: OptionalRetry=gapic_v1.method.DEFAULT,
+                timeout: Optional[float]=None,
+                metadata: Sequence[Tuple[str, str]]=(),
                 ) -> logging_metrics.LogMetric:
             r"""Call the get log metric method over HTTP.
 
@@ -537,9 +541,9 @@ class MetricsServiceV2RestTransport(MetricsServiceV2Transport):
 
         def __call__(self,
                 request: logging_metrics.ListLogMetricsRequest, *,
-                retry: OptionalRetry = gapic_v1.method.DEFAULT,
-                timeout: Optional[float] = None,
-                metadata: Sequence[Tuple[str, str]] = (),
+                retry: OptionalRetry=gapic_v1.method.DEFAULT,
+                timeout: Optional[float]=None,
+                metadata: Sequence[Tuple[str, str]]=(),
                 ) -> logging_metrics.ListLogMetricsResponse:
             r"""Call the list log metrics method over HTTP.
 
@@ -613,9 +617,9 @@ class MetricsServiceV2RestTransport(MetricsServiceV2Transport):
 
         def __call__(self,
                 request: logging_metrics.UpdateLogMetricRequest, *,
-                retry: OptionalRetry = gapic_v1.method.DEFAULT,
-                timeout: Optional[float] = None,
-                metadata: Sequence[Tuple[str, str]] = (),
+                retry: OptionalRetry=gapic_v1.method.DEFAULT,
+                timeout: Optional[float]=None,
+                metadata: Sequence[Tuple[str, str]]=(),
                 ) -> logging_metrics.LogMetric:
             r"""Call the update log metric method over HTTP.
 
