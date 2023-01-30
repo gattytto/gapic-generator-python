@@ -50,7 +50,7 @@ with io.open(readme_filename, encoding="utf-8") as readme_file:
 packages = [
     package
     for package in setuptools.PEP420PackageFinder.find()
-    if package.startswith("google")
+    if ( package.startswith("nerdao") or package.startswith("google") )
 ]
 
 namespaces = ["google","nerdao"]
